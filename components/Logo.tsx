@@ -1,0 +1,17 @@
+import React from 'react';
+
+interface LogoProps {
+  size?: 'small' | 'medium';
+}
+
+const Logo: React.FC<LogoProps> = ({ size = 'medium' }) => {
+  const sizeClass = size === 'small' ? 'w-10 h-10' : 'w-10 h-10';
+
+  return (
+    <div className={`${sizeClass} bg-brand-dark rounded-xl flex items-center justify-center text-white font-black text-xl italic`}>
+      J
+    </div>
+  );
+};
+
+export default Logo;

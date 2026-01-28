@@ -28,7 +28,7 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property, onClose }) =>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto pb-24 px-4">
+      <div className="w-full mx-auto pb-24 px-4 md:px-8">
         {/* Gallery Section Updated */}
         <div className="flex-1 lg:p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8 px-4 md:px-0 mt-4 md:mt-0">

@@ -34,7 +34,7 @@ const LandingPage = ({ onSelectPersona }: { onSelectPersona: (p: UserPersona) =>
       </p>
     </div>
 
-    <div className="w-full max-w-4xl">
+    <div className="w-full max-w-6xl">
       <p className="text-sm font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-6">Choose your profile to start discovery</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {PERSONAS.map(p => (
@@ -107,7 +107,7 @@ const Dashboard = ({ activePersona }: { activePersona: UserPersona }) => {
         {/* Scrollable Area */}
         <div className="flex-1 overflow-y-auto p-4 md:p-8 hide-scrollbar">
           {view === 'list' ? (
-            <div className="max-w-7xl mx-auto">
+            <div className="w-full">
               <div className="flex justify-between items-end mb-8">
                 <div>
                   <h2 className="text-sm font-bold text-brand-light uppercase tracking-widest mb-1">Recommended for {activePersona.name}</h2>
@@ -116,7 +116,7 @@ const Dashboard = ({ activePersona }: { activePersona: UserPersona }) => {
                 <div className="text-gray-500 dark:text-gray-400 text-sm font-medium">{filteredProperties.length} Properties found</div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {filteredProperties.map(p => (
                   <PropertyCard
                     key={p.id}

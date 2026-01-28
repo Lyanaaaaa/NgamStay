@@ -9,8 +9,8 @@ interface PropertyCardProps {
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ property, onClick }) => {
   return (
-    <div 
-      className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100"
+    <div
+      className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100 dark:border-gray-700"
       onClick={() => onClick(property)}
     >
       <div className="relative h-48 overflow-hidden">
@@ -34,25 +34,25 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, onClick }) => {
       
       <div className="p-4">
         <div className="flex justify-between items-start mb-1">
-          <h3 className="font-bold text-gray-800 line-clamp-1">{property.title}</h3>
-          <span className="flex items-center gap-1 text-yellow-500 text-sm font-bold">
+          <h3 className="font-bold text-gray-800 dark:text-gray-200 line-clamp-1">{property.title}</h3>
+          <span className="flex items-center gap-1 text-yellow-500 dark:text-yellow-400 text-sm font-bold">
             ★ {property.rating}
           </span>
         </div>
-        <p className="text-gray-500 text-sm mb-3 flex items-center gap-1">
+        <p className="text-gray-500 dark:text-gray-400 text-sm mb-3 flex items-center gap-1">
           <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           {property.location}
         </p>
-        
+
         <div className="flex flex-wrap gap-2 mb-4">
           {property.lifestyleTags.slice(0, 2).map(tag => (
-            <span key={tag} className="text-[10px] uppercase tracking-wider font-bold text-brand-mid bg-brand-bg px-2 py-1 rounded">
+            <span key={tag} className="text-[10px] uppercase tracking-wider font-bold text-brand-mid dark:text-brand-light bg-brand-bg dark:bg-gray-700 px-2 py-1 rounded">
               {tag}
             </span>
           ))}
         </div>
 
-        <div className="flex items-center justify-between border-t pt-3 text-gray-400 text-xs">
+        <div className="flex items-center justify-between border-t dark:border-gray-700 pt-3 text-gray-400 dark:text-gray-500 text-xs">
           <div className="flex gap-3">
             <span className="flex items-center gap-1">🛏️ {property.beds}</span>
             <span className="flex items-center gap-1">🚿 {property.baths}</span>

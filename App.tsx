@@ -2,7 +2,7 @@
 import React, { useState, useMemo } from 'react';
 import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 import { SAMPLE_PROPERTIES, PERSONAS } from './constants';
-import { Property, PersonaType, UserPersona } from './types';
+import { Property, PersonaType, UserPersona, PMUser, Listing, ListingStatus } from './types';
 import PropertyCard from './components/PropertyCard';
 import PropertyDetail from './components/PropertyDetail';
 import MapView from './components/MapView';
@@ -17,13 +17,34 @@ import ThemeToggle from './components/ThemeToggle';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import MobileNav from './components/MobileNav';
+import PMAuth from './components/PMAuth';
+import PMOnboarding from './components/PMOnboarding';
+import PMDashboard from './components/PMDashboard';
+import PMListingForm from './components/PMListingForm';
 import { ThemeProvider } from './contexts/ThemeContext';
 
-const LandingPage = ({ onSelectPersona }: { onSelectPersona: (p: UserPersona) => void }) => (
+const LandingPage = ({
+  onSelectPersona,
+  onSelectPMMode
+}: {
+  onSelectPersona: (p: UserPersona) => void;
+  onSelectPMMode: () => void;
+}) => (
   <div className="min-h-screen bg-brand-bg dark:bg-gray-900 flex flex-col items-center justify-center p-6 text-center">
     <div className="absolute top-6 right-6">
       <ThemeToggle />
     </div>
+
+    {/* PM Link - Top Left */}
+    <div className="absolute top-6 left-6">
+      <button
+        onClick={onSelectPMMode}
+        className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-brand-dark dark:text-brand-light font-semibold rounded-xl hover:border-brand-light hover:shadow-lg transition-all duration-200"
+      >
+        List Your Property
+      </button>
+    </div>
+
     <div className="mb-12">
       <div className="flex items-center justify-center gap-2 mb-4">
         <Logo />
@@ -135,15 +156,142 @@ const Dashboard = ({ activePersona }: { activePersona: UserPersona }) => {
 };
 
 const App = () => {
+  // Tenant mode state
   const [activePersona, setActivePersona] = useState<UserPersona | null>(null);
+
+  // PM mode state
+  const [pmMode, setPMMode] = useState(false);
+  const [pmUser, setPMUser] = useState<PMUser | null>(null);
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const [pmListings, setPMListings] = useState<Listing[]>([]);
+  const [showListingForm, setShowListingForm] = useState(false);
+  const [editingListing, setEditingListing] = useState<Listing | null>(null);
+
+  const handlePMAuthSuccess = (user: PMUser) => {
+    setPMUser(user);
+    setShowOnboarding(true);
+  };
+
+  const handleOnboardingComplete = () => {
+    setShowOnboarding(false);
+  };
+
+  const handleAddListing = () => {
+    setEditingListing(null);
+    setShowListingForm(true);
+  };
+
+  const handleEditListing = (listing: Listing) => {
+    setEditingListing(listing);
+    setShowListingForm(true);
+  };
+
+  const handleSaveListing = (listingData: Partial<Listing>, isDraft: boolean) => {
+    const updatedUser = { ...pmUser! };
+
+    if (editingListing) {
+      // Update existing listing
+      const updatedListings = pmListings.map(l =>
+        l.id === editingListing.id ? { ...l, ...listingData } : l
+      );
+      setPMListings(updatedListings);
+
+      // Update counts
+      updatedUser.listingCount = updatedListings.length;
+      updatedUser.approvedListingCount = updatedListings.filter(
+        l => l.status === ListingStatus.PUBLISHED || l.status === ListingStatus.APPROVED
+      ).length;
+    } else {
+      // Add new listing
+      const newListing = listingData as Listing;
+      const updatedListings = [...pmListings, newListing];
+      setPMListings(updatedListings);
+
+      // Update counts
+      updatedUser.listingCount = updatedListings.length;
+      updatedUser.approvedListingCount = updatedListings.filter(
+        l => l.status === ListingStatus.PUBLISHED || l.status === ListingStatus.APPROVED
+      ).length;
+    }
+
+    setPMUser(updatedUser);
+    setShowListingForm(false);
+    setEditingListing(null);
+  };
+
+  const handleToggleAvailability = (listingId: string) => {
+    const updatedListings = pmListings.map(l =>
+      l.id === listingId ? { ...l, isAvailable: !l.isAvailable } : l
+    );
+    setPMListings(updatedListings);
+  };
+
+  const handlePMLogout = () => {
+    setPMUser(null);
+    setPMMode(false);
+    setPMListings([]);
+    setShowOnboarding(false);
+    setShowListingForm(false);
+    setEditingListing(null);
+  };
+
+  const handleSelectPMMode = () => {
+    setPMMode(true);
+    setActivePersona(null);
+  };
+
+  const handleBackToTenantMode = () => {
+    setPMMode(false);
+    setActivePersona(null);
+    handlePMLogout();
+  };
 
   return (
     <ThemeProvider>
       <HashRouter>
-        {!activePersona ? (
-          <LandingPage onSelectPersona={setActivePersona} />
+        {/* Property Manager Flow */}
+        {pmMode ? (
+          <>
+            {!pmUser ? (
+              <PMAuth onAuthSuccess={handlePMAuthSuccess} />
+            ) : showOnboarding ? (
+              <PMOnboarding user={pmUser} onComplete={handleOnboardingComplete} />
+            ) : (
+              <>
+                <PMDashboard
+                  user={pmUser}
+                  listings={pmListings}
+                  onAddListing={handleAddListing}
+                  onEditListing={handleEditListing}
+                  onToggleAvailability={handleToggleAvailability}
+                  onLogout={handlePMLogout}
+                  onUpdateUser={setPMUser}
+                  onUpdateListings={setPMListings}
+                />
+                {showListingForm && (
+                  <PMListingForm
+                    user={pmUser}
+                    listing={editingListing}
+                    onSave={handleSaveListing}
+                    onCancel={() => {
+                      setShowListingForm(false);
+                      setEditingListing(null);
+                    }}
+                  />
+                )}
+              </>
+            )}
+          </>
         ) : (
-          <Dashboard activePersona={activePersona} />
+          /* Tenant Flow */
+          !activePersona ? (
+            <LandingPage
+              onSelectPersona={setActivePersona}
+              onSelectPMMode={handleSelectPMMode}
+            />
+          ) : (
+            <Dashboard activePersona={activePersona} />
+          )
         )}
       </HashRouter>
     </ThemeProvider>

@@ -541,6 +541,7 @@ Creat/utilize reusable components, removing duplicated code, and optimizing stru
 Keep the code neat, modular, and easy to maintain, while not altering any styles, classNames, layout, or rendering
 Use global color
 Maintain dark/light mode UI
+Keep it super high adoption/ui-driven
 
 
 Document Status

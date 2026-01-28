@@ -13,6 +13,17 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return saved ? JSON.parse(saved) : false;
   });
 
+  // Initialize dark mode class on mount
+  useEffect(() => {
+    const saved = localStorage.getItem('darkMode');
+    const shouldBeDark = saved ? JSON.parse(saved) : false;
+    if (shouldBeDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
   useEffect(() => {
     localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
     if (isDarkMode) {

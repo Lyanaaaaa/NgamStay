@@ -14,6 +14,9 @@ import SearchInput from './components/SearchInput';
 import PersonaCard from './components/PersonaCard';
 import EmptyState from './components/EmptyState';
 import ThemeToggle from './components/ThemeToggle';
+import Sidebar from './components/Sidebar';
+import Header from './components/Header';
+import MobileNav from './components/MobileNav';
 import { ThemeProvider } from './contexts/ThemeContext';
 
 const LandingPage = ({ onSelectPersona }: { onSelectPersona: (p: UserPersona) => void }) => (
@@ -64,45 +67,20 @@ const Dashboard = ({ activePersona }: { activePersona: UserPersona }) => {
 
   return (
     <div className="min-h-screen bg-brand-bg dark:bg-gray-900 flex flex-col md:flex-row">
-      {/* Sidebar - Desktop */}
-      <aside className="hidden md:flex w-20 flex-col items-center py-8 bg-white dark:bg-gray-800 border-r dark:border-gray-700 gap-8 sticky top-0 h-screen">
-        <Logo />
-        <nav className="flex flex-col gap-8">
-          <NavIcon type="home" active={true} />
-          <NavIcon type="search" />
-          <NavIcon type="heart" />
-          <NavIcon type="clock" />
-        </nav>
-        <div className="mt-auto">
-          <img src={activePersona.avatar} className="w-10 h-10 rounded-full border-2 border-brand-light" alt="Profile" />
-        </div>
-      </aside>
+      <Sidebar activePersona={activePersona} />
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col h-screen overflow-hidden">
-        {/* Header */}
-        <header className="p-4 md:p-6 bg-white dark:bg-gray-800 border-b dark:border-gray-700 sticky top-0 z-30 flex flex-col md:flex-row gap-4 justify-between items-center">
-          <SearchInput
-            value={searchQuery}
-            onChange={setSearchQuery}
-            placeholder="Search Bangsar, Subang..."
-          />
-
-          <ViewToggle view={view} onViewChange={setView} />
-
-          <div className="hidden md:flex gap-2 items-center">
-            <ThemeToggle />
-            <div className="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-2"></div>
-            {propertyTypes.map(t => (
-              <FilterButton
-                key={t}
-                label={t}
-                active={filterType === t}
-                onClick={() => setFilterType(t)}
-              />
-            ))}
-          </div>
-        </header>
+        <Header
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          view={view}
+          onViewChange={setView}
+          filterType={filterType}
+          onFilterChange={setFilterType}
+          propertyTypes={propertyTypes}
+          showFilters={true}
+        />
 
         {/* Scrollable Area */}
         <div className="flex-1 overflow-y-auto p-4 md:p-8 hide-scrollbar">
@@ -116,7 +94,7 @@ const Dashboard = ({ activePersona }: { activePersona: UserPersona }) => {
                 <div className="text-gray-500 dark:text-gray-400 text-sm font-medium">{filteredProperties.length} Properties found</div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6">
                 {filteredProperties.map(p => (
                   <PropertyCard
                     key={p.id}
@@ -144,19 +122,14 @@ const Dashboard = ({ activePersona }: { activePersona: UserPersona }) => {
 
       {/* Property Modal */}
       {selectedProperty && (
-        <PropertyDetail 
-          property={selectedProperty} 
-          onClose={() => setSelectedProperty(null)} 
+        <PropertyDetail
+          property={selectedProperty}
+          onClose={() => setSelectedProperty(null)}
+          activePersona={activePersona}
         />
       )}
 
-      {/* Mobile Nav */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md border-t dark:border-gray-700 flex justify-around p-4 z-40">
-        <NavIcon type="home" active={true} />
-        <NavIcon type="search" />
-        <NavIcon type="heart" />
-        <img src={activePersona.avatar} className="w-6 h-6 rounded-full" alt="Me" />
-      </nav>
+      <MobileNav activePersona={activePersona} />
     </div>
   );
 };

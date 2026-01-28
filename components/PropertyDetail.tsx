@@ -1,34 +1,51 @@
 
 import React, { useEffect, useState } from 'react';
-import { Property } from '../types';
+import { Property, UserPersona } from '../types';
 import { getNeighborhoodInsight } from '../services/gemini';
 import IconButton from './IconButton';
 import InfoCard from './InfoCard';
 import StatItem from './StatItem';
+import Sidebar from './Sidebar';
+import Header from './Header';
+import MobileNav from './MobileNav';
 
 interface PropertyDetailProps {
   property: Property;
   onClose: () => void;
+  activePersona: UserPersona;
 }
 
-const PropertyDetail: React.FC<PropertyDetailProps> = ({ property, onClose }) => {
+const PropertyDetail: React.FC<PropertyDetailProps> = ({ property, onClose, activePersona }) => {
   const [insight, setInsight] = useState<string>('Loading AI neighborhood insights...');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     getNeighborhoodInsight(property.neighborhood).then(setInsight);
   }, [property]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-white dark:bg-gray-900 overflow-y-auto animate-in slide-in-from-bottom duration-500">
-      <div className="sticky top-0 z-10 flex justify-between items-center p-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b dark:border-gray-700">
-        <IconButton icon="close" onClick={onClose} />
-        <div className="flex gap-2">
-          <IconButton icon="heart" />
-          <IconButton icon="share" />
-        </div>
-      </div>
+    <div className="fixed inset-0 z-50 bg-brand-bg dark:bg-gray-900 flex flex-col md:flex-row animate-in slide-in-from-bottom duration-500">
+      <Sidebar activePersona={activePersona} />
 
-      <div className="w-full mx-auto pb-24 px-4 md:px-8">
+      {/* Main Content */}
+      <main className="flex-1 flex flex-col h-screen overflow-hidden">
+        <div className="p-4 md:p-6 bg-white dark:bg-gray-800 border-b dark:border-gray-700 sticky top-0 z-30 flex flex-row gap-4 justify-between items-center">
+          <button
+            onClick={onClose}
+            className="flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-brand-dark dark:hover:text-brand-light transition-colors font-medium"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Listings
+          </button>
+          <div className="flex gap-2 items-center">
+            <IconButton icon="heart" />
+            <IconButton icon="share" />
+          </div>
+        </div>
+
+        <div className="flex-1 overflow-y-auto p-4 md:p-8 pb-24 hide-scrollbar">
         {/* Gallery Section Updated */}
         <div className="flex-1 lg:p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8 px-4 md:px-0 mt-4 md:mt-0">
@@ -142,7 +159,10 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property, onClose }) =>
             </div>
           </div>
         </div>
-      </div>
+        </div>
+      </main>
+
+      <MobileNav activePersona={activePersona} />
     </div>
   );
 };

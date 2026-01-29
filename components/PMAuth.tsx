@@ -73,11 +73,11 @@ const PMAuth: React.FC<PMAuthProps> = ({ onAuthSuccess }) => {
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-2 mb-6">
               <Logo />
-              <span className="text-3xl font-black text-brand-dark dark:text-brand-light tracking-tighter">JIRAN</span>
+              <span className="text-3xl font-black text-brand-dark dark:text-brand-light tracking-tighter">NgamStay</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">
-              List your property,<br />
-              <span className="text-brand-light">fill vacancies faster.</span>
+            List in minutes.<br />
+              <span className="text-brand-light">Get real tenant leads.</span>
             </h1>
             <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
               Join Malaysia's trusted rental marketplace. Connect with verified tenants and manage listings seamlessly.

@@ -1,7 +1,7 @@
 # Property Manager Flow - Implementation Summary
 
 ## Project Context
-**Platform**: Jiran - Malaysian Rental Marketplace
+**Platform**: NgamStay - Malaysian Rental Marketplace
 **Goal**: Dual-path PM onboarding (Autorentic verified + Public PMs) with trust-building mechanisms
 **Strategy Source**: `README.md` - Comprehensive marketplace strategy document
 

@@ -17,7 +17,8 @@ const PMListingCard: React.FC<PMListingCardProps> = ({
   onToggleAvailability
 }) => {
   const canToggleAvailability = [ListingStatus.PUBLISHED, ListingStatus.OCCUPIED].includes(listing.status);
-  const canEdit = listing.status !== ListingStatus.PENDING_REVIEW;
+  // Allow editing for all statuses - property managers can fix mistakes even during review
+  const canEdit = true;
 
   const formatDate = (date: Date) => {
     return new Date(date).toLocaleDateString('en-MY', { day: 'numeric', month: 'short', year: 'numeric' });

@@ -24,7 +24,7 @@ const PMSidebar: React.FC<PMSidebarProps> = ({ user, activeTab, onTabChange, onL
       <div className="p-6 border-b border-gray-100 dark:border-gray-700">
         <div className="flex items-center gap-2 mb-4">
           <Logo />
-          <span className="text-xl font-black text-brand-dark dark:text-brand-light tracking-tighter">JIRAN</span>
+          <span className="text-xl font-black text-brand-dark dark:text-brand-light tracking-tighter">NgamStay</span>
         </div>
         <div className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">
           Property Manager

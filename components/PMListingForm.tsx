@@ -150,6 +150,23 @@ const PMListingForm: React.FC<PMListingFormProps> = ({ user, listing, onSave, on
 
         {/* Form Content */}
         <div className="px-6 py-6 max-h-[calc(100vh-250px)] overflow-y-auto">
+          {/* Under Review Notice */}
+          {isEditing && listing?.status === ListingStatus.PENDING_REVIEW && (
+            <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl">
+              <div className="flex items-start gap-3">
+                <Icon type="info" className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-sm font-semibold text-blue-900 dark:text-blue-300 mb-1">
+                    Editing a Listing Under Review
+                  </p>
+                  <p className="text-xs text-blue-700 dark:text-blue-400">
+                    This listing is currently being reviewed. You can make changes, but any edits will trigger a new review process when you submit.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Step 1: Basic Info */}
           {step === 1 && (
             <div className="space-y-6">
@@ -182,7 +199,7 @@ const PMListingForm: React.FC<PMListingFormProps> = ({ user, listing, onSave, on
 
                 <div>
                   <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
-                    Neighborhood *
+                    Area/Location *
                   </label>
                   <input
                     type="text"

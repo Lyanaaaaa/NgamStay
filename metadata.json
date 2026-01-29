@@ -1,6 +1,6 @@
 
 {
-  "name": "Jiran - Malaysian Rental Platform",
+  "name": "NgamStay - Malaysian Rental Platform",
   "description": "A high-end rental platform for young professionals and digital nomads in Malaysia, featuring AI-powered neighborhood insights and lifestyle-first discovery.",
   "requestFramePermissions": ["geolocation"]
 }

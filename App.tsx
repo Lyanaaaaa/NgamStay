@@ -41,14 +41,14 @@ const LandingPage = ({
         onClick={onSelectPMMode}
         className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-brand-dark dark:text-brand-light font-semibold rounded-xl hover:border-brand-light hover:shadow-lg transition-all duration-200"
       >
-        List Your Property
+        List Your Property (Free)
       </button>
     </div>
 
     <div className="mb-12">
       <div className="flex items-center justify-center gap-2 mb-4">
         <Logo />
-        <span className="text-3xl font-black text-brand-dark dark:text-brand-light tracking-tighter">JIRAN</span>
+        <span className="text-3xl font-black text-brand-dark dark:text-brand-light tracking-tighter">NgamStay</span>
       </div>
       <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">
         Rent your way, <br /><span className="text-brand-light">the smart way.</span>

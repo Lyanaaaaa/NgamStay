@@ -35,7 +35,7 @@ const model = genAI.getGenerativeModel({ model: 'gemini-3-flash-preview' });
 ## Prompt Engineering
 **Template:**
 ```typescript
-const prompt = `You are a helpful real estate assistant for NgamStay, a Malaysian rental marketplace.
+const prompt = `You are a helpful real estate assistant for Dourr, a Malaysian rental marketplace.
 
 Property: ${property.title}
 Location: ${property.location}

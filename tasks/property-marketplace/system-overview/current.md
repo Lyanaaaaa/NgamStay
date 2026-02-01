@@ -1,4 +1,4 @@
-# NgamStay System Overview
+# Dourr System Overview
 
 ## Executive Summary
 Malaysian rental marketplace SPA with dual user flows (Tenant + Property Manager). Built with React 19, TypeScript, Tailwind CSS. Features persona-based property discovery and trust-differentiated PM listing management.
@@ -198,7 +198,7 @@ sequenceDiagram
 
 ## File Structure
 ```
-NgamStay/
+Dourr/
 ├── components/           # 29 UI components
 │   ├── PM*.tsx          # 8 PM-specific components
 │   ├── Property*.tsx    # 3 tenant components

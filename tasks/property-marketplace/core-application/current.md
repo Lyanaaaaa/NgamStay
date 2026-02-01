@@ -1,7 +1,7 @@
 # Core Application Architecture
 
 ## Overview
-NgamStay - Malaysian rental marketplace SPA with dual-mode architecture (Tenant + Property Manager flows).
+Dourr - Malaysian rental marketplace SPA with dual-mode architecture (Tenant + Property Manager flows).
 
 ## Files
 - `App.tsx` - Main router, state management, PM CRUD operations

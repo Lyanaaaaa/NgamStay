@@ -9,7 +9,7 @@ const Logo: React.FC<LogoProps> = ({ size = 'medium' }) => {
 
   return (
     <div className={`${sizeClass} bg-brand-dark dark:bg-brand-light rounded-xl flex items-center justify-center text-white dark:text-gray-900 font-black text-xl italic`}>
-      J
+      D
     </div>
   );
 };

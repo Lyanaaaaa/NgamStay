@@ -13,6 +13,8 @@ interface HeaderProps {
   onFilterChange?: (type: string) => void;
   propertyTypes?: string[];
   showFilters?: boolean;
+  onListPropertyClick?: () => void;
+  onLoginClick?: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -23,7 +25,9 @@ const Header: React.FC<HeaderProps> = ({
   filterType,
   onFilterChange,
   propertyTypes = [],
-  showFilters = true
+  showFilters = true,
+  onListPropertyClick,
+  onLoginClick
 }) => {
   return (
     <header className="p-4 md:p-6 bg-white dark:bg-gray-800 border-b dark:border-gray-700 sticky top-0 z-30 flex flex-col md:flex-row gap-4 justify-between items-center">
@@ -38,10 +42,8 @@ const Header: React.FC<HeaderProps> = ({
       )}
 
       <div className="hidden md:flex gap-2 items-center">
-        <ThemeToggle />
         {showFilters && filterType && onFilterChange && propertyTypes.length > 0 && (
           <>
-            <div className="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-2"></div>
             {propertyTypes.map(t => (
               <FilterButton
                 key={t}
@@ -50,6 +52,29 @@ const Header: React.FC<HeaderProps> = ({
                 onClick={() => onFilterChange(t)}
               />
             ))}
+            <div className="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-2"></div>
+          </>
+        )}
+        <ThemeToggle />
+        {(onListPropertyClick || onLoginClick) && (
+          <>
+            <div className="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-2"></div>
+            {onListPropertyClick && (
+              <button
+                onClick={onListPropertyClick}
+                className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-brand-light dark:hover:text-brand-light hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-lg transition-colors"
+              >
+                List a property
+              </button>
+            )}
+            {onLoginClick && (
+              <button
+                onClick={onLoginClick}
+                className="px-5 py-2 text-sm font-bold text-white bg-gradient-to-r from-brand-dark to-brand-mid hover:from-brand-mid hover:to-brand-dark rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+              >
+                Login
+              </button>
+            )}
           </>
         )}
       </div>

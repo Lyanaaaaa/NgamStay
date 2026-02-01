@@ -48,7 +48,7 @@ const LandingPage = ({
     <div className="mb-12">
       <div className="flex items-center justify-center gap-2 mb-4">
         <Logo />
-        <span className="text-3xl font-black text-brand-dark dark:text-brand-light tracking-tighter">NgamStay</span>
+        <span className="text-3xl font-black text-brand-dark dark:text-brand-light tracking-tighter">Dourr</span>
       </div>
       <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">
         Rent your way, <br /><span className="text-brand-light">the smart way.</span>
@@ -69,7 +69,15 @@ const LandingPage = ({
   </div>
 );
 
-const Dashboard = ({ activePersona }: { activePersona: UserPersona }) => {
+const Dashboard = ({
+  activePersona,
+  onListPropertyClick,
+  onLoginClick
+}: {
+  activePersona: UserPersona;
+  onListPropertyClick: () => void;
+  onLoginClick: () => void;
+}) => {
   const [view, setView] = useState<'list' | 'map'>('list');
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -101,6 +109,8 @@ const Dashboard = ({ activePersona }: { activePersona: UserPersona }) => {
           onFilterChange={setFilterType}
           propertyTypes={propertyTypes}
           showFilters={true}
+          onListPropertyClick={onListPropertyClick}
+          onLoginClick={onLoginClick}
         />
 
         {/* Scrollable Area */}
@@ -166,6 +176,7 @@ const App = () => {
   const [pmListings, setPMListings] = useState<Listing[]>([]);
   const [showListingForm, setShowListingForm] = useState(false);
   const [editingListing, setEditingListing] = useState<Listing | null>(null);
+  const [autoOpenListingForm, setAutoOpenListingForm] = useState(false);
 
   const handlePMAuthSuccess = (user: PMUser) => {
     setPMUser(user);
@@ -174,6 +185,10 @@ const App = () => {
 
   const handleOnboardingComplete = () => {
     setShowOnboarding(false);
+    if (autoOpenListingForm) {
+      setShowListingForm(true);
+      setAutoOpenListingForm(false);
+    }
   };
 
   const handleAddListing = () => {
@@ -233,11 +248,22 @@ const App = () => {
     setShowOnboarding(false);
     setShowListingForm(false);
     setEditingListing(null);
+    setAutoOpenListingForm(false);
   };
 
   const handleSelectPMMode = () => {
     setPMMode(true);
     setActivePersona(null);
+  };
+
+  const handleListPropertyClick = () => {
+    setAutoOpenListingForm(true);
+    setPMMode(true);
+  };
+
+  const handleLoginClick = () => {
+    setAutoOpenListingForm(false);
+    setPMMode(true);
   };
 
   const handleBackToTenantMode = () => {
@@ -253,7 +279,7 @@ const App = () => {
         {pmMode ? (
           <>
             {!pmUser ? (
-              <PMAuth onAuthSuccess={handlePMAuthSuccess} />
+              <PMAuth onAuthSuccess={handlePMAuthSuccess} onClose={() => setPMMode(false)} />
             ) : showOnboarding ? (
               <PMOnboarding user={pmUser} onComplete={handleOnboardingComplete} />
             ) : (
@@ -290,7 +316,11 @@ const App = () => {
               onSelectPMMode={handleSelectPMMode}
             />
           ) : (
-            <Dashboard activePersona={activePersona} />
+            <Dashboard
+              activePersona={activePersona}
+              onListPropertyClick={handleListPropertyClick}
+              onLoginClick={handleLoginClick}
+            />
           )
         )}
       </HashRouter>

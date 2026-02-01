@@ -114,7 +114,7 @@ const PMDashboard: React.FC<PMDashboardProps> = ({
               </p>
               <div className="space-y-2 text-sm">
                 <p className="text-gray-600 dark:text-gray-400">
-                  <span className="font-semibold">Email:</span> support@ngamstay.com
+                  <span className="font-semibold">Email:</span> support@dourr.com
                 </p>
                 <p className="text-gray-600 dark:text-gray-400">
                   <span className="font-semibold">WhatsApp:</span> +60 12-345 6789

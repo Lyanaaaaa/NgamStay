@@ -52,17 +52,16 @@ const Header: React.FC<HeaderProps> = ({
                 onClick={() => onFilterChange(t)}
               />
             ))}
-            <div className="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-2"></div>
           </>
         )}
-        <ThemeToggle />
         {(onListPropertyClick || onLoginClick) && (
           <>
+            <div className="w-px h-6 mx-2"></div>
             <div className="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-2"></div>
             {onListPropertyClick && (
               <button
                 onClick={onListPropertyClick}
-                className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-brand-light dark:hover:text-brand-light hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-lg transition-colors"
+                className="px-4 py-2 text-xs font-medium text-gray-400 dark:text-gray-300 hover:text-brand-light dark:hover:text-brand-light rounded-full transition-colors"
               >
                 List a property
               </button>
@@ -70,7 +69,7 @@ const Header: React.FC<HeaderProps> = ({
             {onLoginClick && (
               <button
                 onClick={onLoginClick}
-                className="px-5 py-2 text-sm font-bold text-white bg-gradient-to-r from-brand-dark to-brand-mid hover:from-brand-mid hover:to-brand-dark rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+                className="px-5 py-2 text-sm font-bold text-white bg-gradient-to-r from-brand-dark to-brand-mid hover:from-brand-mid hover:to-brand-dark rounded-full transition-all duration-200 shadow-md hover:shadow-lg"
               >
                 Login
               </button>

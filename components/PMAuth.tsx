@@ -68,7 +68,7 @@ const PMAuth: React.FC<PMAuthProps> = ({ onAuthSuccess, onClose }) => {
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+          className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
           aria-label="Close"
         >
           <Icon type="x" className="w-5 h-5 text-gray-600 dark:text-gray-300" />
@@ -89,7 +89,7 @@ const PMAuth: React.FC<PMAuthProps> = ({ onAuthSuccess, onClose }) => {
               <Logo />
               <span className="text-2xl font-black text-brand-dark dark:text-brand-light tracking-tighter">Dourr</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">
+            <h2 className="text-2xl md:text-3xl font-serif text-gray-900 dark:text-white mb-3 leading-tight">
               Quick question—are you currently using Autorentic?
             </h2>
             <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -105,7 +105,7 @@ const PMAuth: React.FC<PMAuthProps> = ({ onAuthSuccess, onClose }) => {
               className="group w-full bg-gradient-to-br from-brand-dark to-brand-mid hover:from-brand-mid hover:to-brand-dark p-6 rounded-2xl text-left transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
             >
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
                   <Icon type="shield" className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-1">
@@ -132,7 +132,7 @@ const PMAuth: React.FC<PMAuthProps> = ({ onAuthSuccess, onClose }) => {
               className="group w-full bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 p-6 rounded-2xl text-left transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 border-transparent hover:border-brand-light"
             >
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-brand-light/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 flex items-center justify-center flex-shrink-0">
                   <Icon type="building" className="w-6 h-6 text-brand-light" />
                 </div>
                 <div className="flex-1">
@@ -190,10 +190,10 @@ const PMAuth: React.FC<PMAuthProps> = ({ onAuthSuccess, onClose }) => {
           </button>
 
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-dark/10 dark:bg-brand-light/10 rounded-2xl mb-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-dark/10 dark:bg-brand-light/10 rounded-full mb-4">
               <Icon type="shield" className="w-8 h-8 text-brand-dark dark:text-brand-light" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Connect Autorentic</h2>
+            <h2 className="text-2xl font-serif text-gray-900 dark:text-white mb-2">Connect Autorentic</h2>
             <p className="text-gray-500 dark:text-gray-400 text-sm">
               Verify your account to get instant access
             </p>
@@ -209,21 +209,21 @@ const PMAuth: React.FC<PMAuthProps> = ({ onAuthSuccess, onClose }) => {
                 value={contactValue}
                 onChange={(e) => setContactValue(e.target.value)}
                 placeholder="your@email.com or +60123456789"
-                className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:border-brand-light focus:ring-2 focus:ring-brand-light/20 transition-all text-gray-900 dark:text-white"
+                className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-full focus:outline-none focus:border-brand-light focus:ring-2 focus:ring-brand-light/20 transition-all text-gray-900 dark:text-white"
               />
             </div>
 
             <button
               onClick={() => handleSendOTP(AuthMethod.AUTORENTIC)}
               disabled={!contactValue}
-              className="w-full bg-brand-dark hover:bg-brand-mid text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full bg-brand-dark hover:bg-brand-mid text-white font-bold py-3 px-6 rounded-full transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               Continue with Autorentic
               <Icon type="arrow-right" className="w-5 h-5" />
             </button>
           </div>
 
-          <div className="mt-6 p-4 bg-brand-light/10 rounded-xl">
+          <div className="mt-6 p-4 bg-brand-light/10 rounded-2xl">
             <p className="text-xs text-gray-600 dark:text-gray-300 flex items-start gap-2">
               <Icon type="shield" className="w-4 h-4 text-brand-light flex-shrink-0 mt-0.5" />
               <span>
@@ -250,10 +250,10 @@ const PMAuth: React.FC<PMAuthProps> = ({ onAuthSuccess, onClose }) => {
           </button>
 
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-light/10 rounded-2xl mb-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-light/10 rounded-full mb-4">
               <Icon type="building" className="w-8 h-8 text-brand-light" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Create Account</h2>
+            <h2 className="text-2xl font-serif text-gray-900 dark:text-white mb-2">Create Account</h2>
             <p className="text-gray-500 dark:text-gray-400 text-sm">
               Start listing in under 2 minutes
             </p>
@@ -269,7 +269,7 @@ const PMAuth: React.FC<PMAuthProps> = ({ onAuthSuccess, onClose }) => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="John Doe"
-                className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:border-brand-light focus:ring-2 focus:ring-brand-light/20 transition-all text-gray-900 dark:text-white"
+                className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-full focus:outline-none focus:border-brand-light focus:ring-2 focus:ring-brand-light/20 transition-all text-gray-900 dark:text-white"
               />
             </div>
 
@@ -284,7 +284,7 @@ const PMAuth: React.FC<PMAuthProps> = ({ onAuthSuccess, onClose }) => {
                     setContactValue('');
                     setTimeout(() => document.getElementById('contact-input')?.focus(), 100);
                   }}
-                  className={`p-3 rounded-xl border-2 transition-all ${
+                  className={`p-3 rounded-full border-2 transition-all ${
                     authMethod === AuthMethod.EMAIL_OTP
                       ? 'border-brand-light bg-brand-light/10'
                       : 'border-gray-200 dark:border-gray-700 hover:border-brand-light/50'
@@ -299,7 +299,7 @@ const PMAuth: React.FC<PMAuthProps> = ({ onAuthSuccess, onClose }) => {
                     setContactValue('');
                     setTimeout(() => document.getElementById('contact-input')?.focus(), 100);
                   }}
-                  className={`p-3 rounded-xl border-2 transition-all ${
+                  className={`p-3 rounded-full border-2 transition-all ${
                     authMethod === AuthMethod.PHONE_OTP
                       ? 'border-brand-light bg-brand-light/10'
                       : 'border-gray-200 dark:border-gray-700 hover:border-brand-light/50'
@@ -321,7 +321,7 @@ const PMAuth: React.FC<PMAuthProps> = ({ onAuthSuccess, onClose }) => {
                 value={contactValue}
                 onChange={(e) => setContactValue(e.target.value)}
                 placeholder={authMethod === AuthMethod.PHONE_OTP ? '+60123456789' : 'your@email.com'}
-                className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:border-brand-light focus:ring-2 focus:ring-brand-light/20 transition-all text-gray-900 dark:text-white"
+                className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-full focus:outline-none focus:border-brand-light focus:ring-2 focus:ring-brand-light/20 transition-all text-gray-900 dark:text-white"
               />
             </div>
 
@@ -331,7 +331,7 @@ const PMAuth: React.FC<PMAuthProps> = ({ onAuthSuccess, onClose }) => {
                 handleSendOTP(method);
               }}
               disabled={!name || !contactValue}
-              className="w-full bg-brand-light hover:bg-brand-mid text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full bg-brand-light hover:bg-brand-mid text-white font-bold py-3 px-6 rounded-full transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               Send Verification Code
               <Icon type="arrow-right" className="w-5 h-5" />
@@ -356,10 +356,10 @@ const PMAuth: React.FC<PMAuthProps> = ({ onAuthSuccess, onClose }) => {
           </button>
 
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-light/10 rounded-2xl mb-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-light/10 rounded-full mb-4">
               <Icon type="shield" className="w-8 h-8 text-brand-light" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Verify Your Account</h2>
+            <h2 className="text-2xl font-serif text-gray-900 dark:text-white mb-2">Verify Your Account</h2>
             <p className="text-gray-500 dark:text-gray-400 text-sm">
               Enter the 6-digit code sent to<br />
               <span className="font-semibold text-brand-light">{contactValue}</span>
@@ -386,10 +386,10 @@ const PMAuth: React.FC<PMAuthProps> = ({ onAuthSuccess, onClose }) => {
     return (
       <ModalWrapper>
         <div className="p-8 md:p-12 text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-brand-light/10 rounded-3xl mb-6 animate-pulse">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-brand-light/10 rounded-full mb-6 animate-pulse">
             <Icon type="check-circle" className="w-10 h-10 text-brand-light" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Creating Your Account...</h2>
+          <h2 className="text-2xl font-serif text-gray-900 dark:text-white mb-2">Creating Your Account...</h2>
           <p className="text-gray-500 dark:text-gray-400">
             Setting up your dashboard
           </p>

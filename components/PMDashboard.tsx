@@ -46,7 +46,7 @@ const PMDashboard: React.FC<PMDashboardProps> = ({
     if (activeTab === 'settings') {
       return (
         <div className="max-w-3xl">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Account Settings</h2>
+          <h2 className="text-2xl font-serif text-gray-900 dark:text-white mb-6">Account Settings</h2>
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700">
             <div className="space-y-6">
               <div>
@@ -95,7 +95,7 @@ const PMDashboard: React.FC<PMDashboardProps> = ({
     if (activeTab === 'help') {
       return (
         <div className="max-w-3xl">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Help & Support</h2>
+          <h2 className="text-2xl font-serif text-gray-900 dark:text-white mb-6">Help & Support</h2>
           <div className="space-y-4">
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700">
               <h3 className="font-bold text-gray-900 dark:text-white mb-3">Getting Started</h3>
@@ -198,7 +198,7 @@ const PMDashboard: React.FC<PMDashboardProps> = ({
         ) : (
           <>
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">My Listings</h2>
+              <h2 className="text-2xl font-serif text-gray-900 dark:text-white">My Listings</h2>
               <button
                 onClick={onAddListing}
                 className="md:hidden flex items-center gap-2 bg-brand-light hover:bg-brand-mid text-white font-bold py-2.5 px-5 rounded-xl transition-all duration-200"

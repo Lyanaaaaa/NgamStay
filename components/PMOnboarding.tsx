@@ -46,7 +46,7 @@ const PMOnboarding: React.FC<PMOnboardingProps> = ({ user, onComplete }) => {
               <Icon type="sparkles" className="w-4 h-4 text-brand-light" />
               <span className="text-sm font-bold text-brand-light">Welcome aboard!</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">
+            <h1 className="text-4xl md:text-5xl font-serif text-gray-900 dark:text-white mb-4 tracking-tight">
               Hey {user.name}!<br />
               <span className="text-brand-light">Let's get you started</span>
             </h1>
@@ -108,7 +108,7 @@ const PMOnboarding: React.FC<PMOnboardingProps> = ({ user, onComplete }) => {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-light/10 rounded-2xl mb-6">
                 <Icon type="shield" className="w-8 h-8 text-brand-light" />
               </div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">Terms & Guidelines</h2>
+              <h2 className="text-3xl font-serif text-gray-900 dark:text-white mb-3">Terms & Guidelines</h2>
               <p className="text-gray-500 dark:text-gray-400">
                 Quick review before you start listing
               </p>

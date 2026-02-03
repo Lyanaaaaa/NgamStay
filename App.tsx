@@ -39,7 +39,7 @@ const LandingPage = ({
     <div className="absolute top-6 left-6">
       <button
         onClick={onSelectPMMode}
-        className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-brand-dark dark:text-brand-light font-semibold rounded-xl hover:border-brand-light hover:shadow-lg transition-all duration-200"
+        className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-brand-dark dark:text-brand-light font-semibold rounded-full hover:border-brand-light hover:shadow-lg transition-all duration-200"
       >
         List Your Property (Free)
       </button>
@@ -50,7 +50,7 @@ const LandingPage = ({
         <Logo />
         <span className="text-3xl font-black text-brand-dark dark:text-brand-light tracking-tighter">Dourr</span>
       </div>
-      <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">
+      <h1 className="text-4xl md:text-6xl font-serif text-gray-900 dark:text-white mb-4 tracking-tight">
         Rent your way, <br /><span className="text-brand-light">the smart way.</span>
       </h1>
       <p className="text-lg text-gray-500 dark:text-gray-400 max-w-lg mx-auto">
@@ -92,7 +92,8 @@ const Dashboard = ({
     });
   }, [searchQuery, filterType]);
 
-  const propertyTypes = ['All', 'Serviced Apartment', 'Condo', 'Room Rental', 'Duplex'];
+  // const propertyTypes = ['All', 'Move-in Ready', 'Budget', 'Near MRT', 'Furnished'];
+  const propertyTypes = ['All', 'Room', 'Studio', 'Entire Unit', 'Move-in Ready'];
 
   return (
     <div className="min-h-screen bg-brand-bg dark:bg-gray-900 flex flex-col md:flex-row">

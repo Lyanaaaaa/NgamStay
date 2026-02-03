@@ -82,7 +82,7 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property, onClose, acti
         <div className="p-6">
           <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
             <div>
-              <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">{property.title}</h1>
+              <h1 className="text-3xl font-serif text-gray-900 dark:text-white mb-2">{property.title}</h1>
               <p className="text-lg text-brand-mid dark:text-brand-light font-medium flex items-center gap-2">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                 {property.location}
@@ -103,7 +103,7 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property, onClose, acti
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="md:col-span-2 space-y-8">
               <section>
-                <h2 className="text-gray-800 dark:text-gray-200 text-xl font-bold mb-4">Rental Breakdown</h2>
+                <h2 className="text-gray-800 dark:text-gray-200 text-xl font-serif mb-4">Rental Breakdown</h2>
                 <div className="grid grid-cols-2 gap-4">
                   <InfoCard label="Deposit" value={property.deposit} />
                   <InfoCard label="Utilities" value={property.utilities} />
@@ -112,7 +112,7 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property, onClose, acti
               </section>
 
               <section>
-                <h2 className="text-gray-800 dark:text-gray-200 text-xl font-bold mb-4">Amenities</h2>
+                <h2 className="text-gray-800 dark:text-gray-200 text-xl font-serif mb-4">Amenities</h2>
                 <div className="flex flex-wrap gap-2">
                   {property.amenities.map(a => (
                     <span key={a} className="text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-4 py-2 rounded-lg text-sm flex items-center gap-2">
@@ -124,9 +124,9 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property, onClose, acti
 
               <section className="bg-brand-dark dark:bg-gray-800 rounded-2xl p-6 text-white overflow-hidden relative border dark:border-gray-700">
                 <div className="relative z-10">
-                  <h2 className="text-xl font-bold mb-2 flex items-center gap-2">
+                  <h2 className="text-xl font-serif mb-2 flex items-center gap-2">
                     <svg className="w-6 h-6 text-brand-light" fill="currentColor" viewBox="0 0 20 20"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3.005 3.005 0 013.75-2.906z" /></svg>
-                    Dourr AI Insights
+                    Dourr Insights
                   </h2>
                   <p className="text-brand-light/90 dark:text-gray-300 italic leading-relaxed">
                     "{insight}"
@@ -138,7 +138,7 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ property, onClose, acti
 
             <div className="space-y-6">
               <div className="border border-gray-100 dark:border-gray-700 rounded-2xl p-6 shadow-sm bg-white dark:bg-gray-800 sticky top-24">
-                <h3 className="text-gray-800 dark:text-gray-200 font-bold text-lg mb-4">Contact Landlord</h3>
+                <h3 className="text-gray-800 dark:text-gray-200 font-serif text-lg mb-4">Contact Landlord</h3>
                 <div className="flex items-center gap-3 mb-6">
                   <img src="https://picsum.photos/seed/host/100" className="w-12 h-12 rounded-full" alt="Host" />
                   <div>

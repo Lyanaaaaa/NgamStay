@@ -12,8 +12,8 @@ const PersonaCard: React.FC<PersonaCardProps> = ({ persona, onSelect }) => {
       onClick={() => onSelect(persona)}
       className="group bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 dark:border-gray-700 text-left"
     >
-      <img src={persona.avatar} alt={persona.name} className="w-16 h-16 rounded-2xl mb-4 group-hover:scale-110 transition-transform" />
-      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{persona.name}</h3>
+      <img src={persona.avatar} alt={persona.name} className="w-16 h-16 rounded-3xl mb-4 group-hover:scale-110 transition-transform" />
+      <h3 className="text-xl font-serif text-gray-900 dark:text-white mb-1">{persona.name}</h3>
       <p className="text-brand-mid dark:text-brand-light font-medium text-sm mb-4">{persona.role}</p>
       <div className="space-y-2">
         {persona.preferences.map(pref => (

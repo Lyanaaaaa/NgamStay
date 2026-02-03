@@ -34,7 +34,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, onClick }) => {
       
       <div className="p-4">
         <div className="flex justify-between items-start mb-1">
-          <h3 className="font-bold text-gray-800 dark:text-gray-200 line-clamp-1">{property.title}</h3>
+          <h3 className="font-serif text-gray-800 dark:text-gray-200 line-clamp-1">{property.title}</h3>
           <span className="flex items-center gap-1 text-yellow-500 dark:text-yellow-400 text-sm font-bold">
             ★ {property.rating}
           </span>

@@ -80,7 +80,7 @@ const OTPInput: React.FC<OTPInputProps> = ({ length = 6, onComplete, disabled = 
           className={`
             w-12 h-14 text-center text-2xl font-bold
             bg-white dark:bg-gray-800
-            border-2 rounded-xl
+            border-2 rounded-full
             ${digit ? 'border-brand-light' : 'border-gray-200 dark:border-gray-700'}
             focus:outline-none focus:border-brand-light focus:ring-2 focus:ring-brand-light/20
             disabled:opacity-50 disabled:cursor-not-allowed
